@@ -100,46 +100,49 @@ distance = sqrt((x1-x2)² + (y1-y2)² + (z1-z2)²)
 
 ### 3.1 AI-Assisted Development with Claude Code (Cursor AI)
 
-This project was developed with extensive AI assistance, demonstrating effective human-AI collaboration:
+This project demonstrates effective **human-AI collaboration** where strategic direction came from human oversight while implementation was handled by AI:
+
+**Collaboration Model:**
+- **Human Role (User):** Provided high-level approaches, architectural decisions, clarifications on requirements, and optimization strategies
+- **AI Role (Claude/Cursor):** Implemented all programming, coding, debugging, and technical execution based on user's direction
 
 **Initial System Design:**
-- AI helped structure the modular architecture based on software engineering best practices
-- Suggested separation between data generation and verification logic
-- Recommended the two-tier API design (low-level detector + high-level service)
+- **User:** Defined the overall system requirements, specified the need for modular architecture, and clarified the verification service API requirements
+- **AI:** Implemented the modular structure, created the two-tier architecture (low-level detector + high-level service), and established separation between data generation and verification logic
 
 **Algorithm Implementation:**
-- AI provided the initial cubic spline interpolation approach for smooth trajectories
-- Suggested efficient conflict detection using time-step sampling rather than analytical solutions
-- Helped optimize the pairwise comparison algorithm
+- **User:** Specified the need for smooth trajectories, conflict detection requirements, and safety buffer considerations
+- **AI:** Implemented cubic spline interpolation, coded the time-step sampling algorithm, and programmed the pairwise comparison logic
+- **User:** Suggested optimizations for performance and efficiency improvements throughout development
 
 **Visualization Development:**
-- AI implemented the matplotlib-based static visualizations
-- Created the animation system using matplotlib.animation
-- Fixed critical bugs (e.g., blank PNG images due to `plt.show()` clearing figures)
+- **User:** Requested 4D visualization features, specified animation requirements, and provided feedback on visualization quality
+- **AI:** Implemented all matplotlib-based static visualizations, coded the animation system using matplotlib.animation, debugged rendering issues (e.g., blank PNG images due to `plt.show()` clearing figures)
 
 **Testing and Debugging:**
-- AI helped design the edge case scenarios
-- Identified and fixed timing synchronization issues in conflict detection
-- Resolved interpolation problems causing false negatives
+- **User:** Identified issues with scenario realism, requested more challenging test cases, pointed out conflicts not being detected
+- **AI:** Designed and implemented edge case scenarios, debugged timing synchronization issues, fixed interpolation problems causing false negatives, corrected scenario timing to ensure proper conflict detection
 
 ### 3.2 Critical Evaluation of AI Output
 
 **What Worked Well:**
-- ✅ Rapid prototyping of the core algorithm
-- ✅ Comprehensive documentation generation
-- ✅ Efficient debugging of complex timing issues
-- ✅ Generation of realistic test scenarios
+- ✅ AI rapidly implemented all code based on user's specifications
+- ✅ AI generated comprehensive documentation following user's structural guidance
+- ✅ AI efficiently debugged complex timing issues identified by user
+- ✅ AI coded realistic test scenarios based on user's requirements
 
-**What Required Human Oversight:**
-- ⚠️ Initial conflict scenarios had timing misalignments that required manual debugging
-- ⚠️ Safety buffer defaults needed domain expertise (initial 50m → adjusted to 10m)
-- ⚠️ API design iterations based on usability considerations
-- ⚠️ Performance optimization decisions for large-scale scenarios
+**What Required Human Oversight and Direction:**
+- ⚠️ **User identified** initial conflict scenarios had timing misalignments; AI fixed implementation
+- ⚠️ **User specified** safety buffer should be 10m based on domain expertise; AI updated throughout codebase
+- ⚠️ **User directed** API design iterations based on usability needs; AI implemented changes
+- ⚠️ **User suggested** performance optimization strategies; AI implemented the optimizations
+- ⚠️ **User provided** continuous feedback on scenario realism; AI adjusted implementations
 
 **Validation Approach:**
-- Every AI-generated algorithm was tested with known ground truth scenarios
-- Manual verification of conflict detection with hand-calculated examples
-- Cross-validation between static visualizations and animated outputs
+- User verified all AI-generated algorithms against expected behavior
+- User tested scenarios and identified issues; AI fixed bugs
+- User reviewed visualizations and requested improvements; AI implemented enhancements
+- Iterative cycle: User feedback → AI implementation → User validation
 
 ### 3.3 Self-Driven Learning
 
