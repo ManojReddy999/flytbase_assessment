@@ -1,0 +1,104 @@
+    def animate_altitude_profile(
+        self,
+        flights: List[FlightPlan],
+        conflicts: Optional[List[Conflict]] = None,
+        duration: float = 10,
+        fps: int = 30
+    ):
+        """
+        Create animated altitude profile showing temporal evolution.
+        
+        Args:
+            flights: List of flight plans
+            conflicts: Optional list of conflicts
+            duration: Duration of animation in seconds
+            fps: Frames per second
+            
+        Returns:
+            Animation object
+        """
+        fig, ax = plt.subplots(figsize=self.figsize, dpi=self.dpi)
+        
+        # Find time and altitude ranges
+        all_times = []
+        all_altitudes = []
+        for flight in flights:
+            times = [wp.time for wp in flight.waypoints]
+            altitudes = [wp.z for wp in flight.waypoints]
+            all_times.extend(times)
+            all_altitudes.extend(altitudes)
+        
+        min_time = min(all_times)
+        max_time = max(all_times)
+        min_alt = min(all_altitudes) - 20
+        max_alt = max(all_altitudes) + 20
+        
+        # Prepare full flight paths (will be shown progressively)
+        flight_data = []
+        for i, flight in enumerate(flights):
+            color = self.colors[i % len(self.colors)]
+            times = [wp.time for wp in flight.waypoints]
+            altitudes = [wp.z for wp in flight.waypoints]
+            flight_data.append({
+                'times': times,
+                'altitudes': altitudes,
+                'color': color,
+                'label': flight.uav_id
+            })
+        
+        # Animation function
+        def animate_frame(frame_num):
+            ax.clear()
+            
+            # Current time in simulation
+            current_time = min_time + (max_time - min_time) * frame_num / (fps * duration)
+            
+            # Plot each flight's altitude up to current time
+            for data in flight_data:
+                # Find indices up to current time
+                visible_indices = [i for i, t in enumerate(data['times']) if t <= current_time]
+                
+                if visible_indices:
+                    visible_times = [data['times'][i] for i in visible_indices]
+                    visible_alts = [data['altitudes'][i] for i in visible_indices]
+                    
+                    # Plot the visible portion
+                    ax.plot(visible_times, visible_alts, 
+                           color=data['color'], linewidth=2, 
+                           label=data['label'], alpha=0.8)
+                    
+                    # Mark current position
+                    if len(visible_times) > 0:
+                        ax.scatter([visible_times[-1]], [visible_alts[-1]], 
+                                 color=data['color'], s=100, zorder=5,
+                                 edgecolors='black', linewidths=1.5)
+            
+            # Show conflict times if any occur up to current time
+            if conflicts:
+                conflict_times = [c.time for c in conflicts if c.time <= current_time]
+                for t in conflict_times:
+                    ax.axvline(x=t, color='red', linestyle='--',
+                             linewidth=2, alpha=0.6, zorder=1)
+            
+            # Time indicator
+            ax.axvline(x=current_time, color='green', linestyle='-',
+                      linewidth=2, alpha=0.5, label=f'Current Time: {current_time:.1f}s')
+            
+            ax.set_xlim(min_time, max_time)
+            ax.set_ylim(min_alt, max_alt)
+            ax.set_xlabel('Time (seconds)', fontsize=12)
+            ax.set_ylabel('Altitude (meters)', fontsize=12)
+            ax.set_title(f'Altitude Profile Animation (t={current_time:.1f}s)', 
+                        fontsize=14, fontweight='bold')
+            ax.legend(loc='upper right', fontsize=8)
+            ax.grid(True, alpha=0.3)
+        
+        # Create animation
+        total_frames = int(fps * duration)
+        anim = animation.FuncAnimation(
+            fig, animate_frame, frames=total_frames,
+            interval=1000/fps, blit=False, repeat=True
+        )
+        
+        return anim
+    

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+notebook_output/
+
+# Generated outputs (can be regenerated)
+outputs/
+
+# Virtual environments
+venv/
+env/
+ENV/
+flytenv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+.pytest_cache/
+.coverage
+htmlcov/
