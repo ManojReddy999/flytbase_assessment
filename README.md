@@ -543,24 +543,6 @@ flytbase/
 
 ---
 
-## AI-Assisted Development
-
-This project was developed using **Claude Code** and **Cursor AI**, demonstrating effective use of AI tools for:
-
-1. **Rapid Prototyping**: Initial architecture and implementation
-2. **Iterative Refinement**: Multiple iterations to correct architecture (from deconfliction to verification)
-3. **Edge Case Discovery**: AI-assisted identification of challenging scenarios
-4. **Code Quality**: Automated generation of comprehensive tests and documentation
-5. **Visualization**: Complex 4D animation system implementation
-
-**Critical Evaluation**: All AI-generated code was:
-- ✅ Reviewed for correctness
-- ✅ Tested comprehensively
-- ✅ Refactored for clarity
-- ✅ Validated against requirements
-
----
-
 ## Known Limitations
 
 1. **Temporal Resolution**: May miss conflicts shorter than `time_step` parameter (default: 0.5s)
@@ -587,39 +569,6 @@ Install all:
 ```bash
 pip install -r requirements.txt
 ```
-
----
-
-## Assignment Compliance
-
-### Deliverables ✅
-
-1. **Code Repository** ✅
-   - Self-contained Python solution
-   - Modular and well-documented
-   - Industry-standard code quality
-
-2. **Documentation** ✅
-   - This README (setup and execution)
-   - Reflection on design decisions (above)
-   - Scalability discussion (above)
-   - Edge case testing strategy (above)
-
-3. **Demonstration Video** ⚠️
-   - **Status**: Not yet created
-   - **Ready**: All content and visualizations prepared
-   - **Action**: Record 3-5 minute video with voiceover
-
-### Rubric Alignment
-
-- **Code Quality & Architecture**: 35/35 ✅
-- **Testability & QA**: 25/25 ✅
-- **Effective Use of AI**: 20/20 ✅
-- **Documentation**: 10/20 ⚠️ (missing video)
-- **Extra Credit (4D Viz)**: +10 ✅
-
-**Current Score**: 90/100 + 10 (extra) = 100/110  
-**With Video**: 100/100 + 10 (extra) = 110/110
 
 ---
 
