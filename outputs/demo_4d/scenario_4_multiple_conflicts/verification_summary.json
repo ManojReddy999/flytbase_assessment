@@ -1,0 +1,55 @@
+{
+  "status": "CONFLICT_DETECTED",
+  "is_clear": false,
+  "primary_mission": {
+    "uav_id": "PRIMARY",
+    "num_waypoints": 9,
+    "duration_seconds": 300.0,
+    "total_distance_meters": 8485.281374238572,
+    "start_time": 0.0,
+    "end_time": 300.0
+  },
+  "conflicts": [
+    {
+      "location": [
+        4000.0,
+        4000.0,
+        200.0
+      ],
+      "time": 100.0,
+      "conflicting_flight": "SIM-CROSS-1",
+      "distance": 0.0,
+      "severity": 1.0
+    },
+    {
+      "location": [
+        6000.0,
+        6000.0,
+        200.0
+      ],
+      "time": 200.0,
+      "conflicting_flight": "SIM-CROSS-2",
+      "distance": 0.0,
+      "severity": 1.0
+    },
+    {
+      "location": [
+        8000.0,
+        8000.0,
+        200.0
+      ],
+      "time": 300.0,
+      "conflicting_flight": "SIM-HOVER",
+      "distance": 0.0,
+      "severity": 1.0
+    }
+  ],
+  "summary": {
+    "total_conflicts": 3,
+    "conflicting_flights": [
+      "SIM-CROSS-2",
+      "SIM-CROSS-1",
+      "SIM-HOVER"
+    ]
+  }
+}

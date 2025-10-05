@@ -1,0 +1,17 @@
+{
+  "status": "CLEAR",
+  "is_clear": true,
+  "primary_mission": {
+    "uav_id": "PRIMARY",
+    "num_waypoints": 16,
+    "duration_seconds": 277.94806443913393,
+    "total_distance_meters": 4211.993027207817,
+    "start_time": 0.0,
+    "end_time": 277.94806443913393
+  },
+  "conflicts": [],
+  "summary": {
+    "total_conflicts": 0,
+    "conflicting_flights": []
+  }
+}

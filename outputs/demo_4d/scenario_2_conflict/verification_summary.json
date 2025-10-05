@@ -1,0 +1,31 @@
+{
+  "status": "CONFLICT_DETECTED",
+  "is_clear": false,
+  "primary_mission": {
+    "uav_id": "PRIMARY",
+    "num_waypoints": 5,
+    "duration_seconds": 200.0,
+    "total_distance_meters": 4000.0,
+    "start_time": 0.0,
+    "end_time": 200.0
+  },
+  "conflicts": [
+    {
+      "location": [
+        5000.0,
+        5000.0,
+        200.0
+      ],
+      "time": 100.0,
+      "conflicting_flight": "SIM-CROSSING",
+      "distance": 0.0,
+      "severity": 1.0
+    }
+  ],
+  "summary": {
+    "total_conflicts": 1,
+    "conflicting_flights": [
+      "SIM-CROSSING"
+    ]
+  }
+}

@@ -14,7 +14,8 @@ build/
 notebook_output/
 
 # Generated outputs (can be regenerated)
-outputs/
+outputs/*
+!outputs/demo_4d/
 
 # Virtual environments
 venv/
